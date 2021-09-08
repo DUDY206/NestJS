@@ -1,0 +1,57 @@
+version: '3.7'
+networks: 
+  backend:
+    driver: bridge
+
+services: 
+  nestjs:
+    build: 
+      context: .
+      dockerfile: docker/nestjs/Dockerfile
+    container_name: prj_nestjs
+    restart: always
+    volumes: 
+      - ./:/var/www/nestjs
+    networks: 
+      - backend
+  
+  nginx:
+    container_name: prj_nginx
+    image: nginx:1.16.1-alpine
+    restart: always
+    volumes: 
+    - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    - ./docker/log/nginx:/var/log/nginx
+    ports: 
+      - '80:80'
+      - '443:443'
+    networks: 
+    - backend
+
+  mysql:
+    container_name: prj_mysql
+    image: mysql:5.7.22
+    restart: always
+    environment: 
+      - MYSQL_ROOT_PASSWORD=abcdef123
+      - MYSQL_DATABASE=nestjs
+      - MYSQL_USER=dudy206
+      - MYSQL_PASSWORD=abcdef123
+    networks: 
+      - backend
+    
+  phpmyadmin:
+    container_name: prj_phpmyadmin
+    image: phpmyadmin:5.1.0
+    environment: 
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=abcdef123
+      - UPLOAD_LIMIT=20000000
+    ports: 
+      - '8181:80'
+    networks: 
+      - backend
+    depends_on: 
+      - mysql

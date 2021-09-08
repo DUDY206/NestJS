@@ -1,0 +1,1 @@
+nest g co: Create new controller and add to app.module (--no-spec options to not create file test spec)
