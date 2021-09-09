@@ -1,6 +1,6 @@
 # Docker with Nestjs
 Build enviroment for NestJs, Nginx, MySQL, PHPMyAdmin by Docker-compose step by step
-![This is an image](https://raw.githubusercontent.com/DUDY206/NestJs/master/docker-env.png)
+![This is an image](https://raw.githubusercontent.com/DUDY206/NestJs/519ea0e56fe982cd80f73ac0dc6473ac77f2466c/docker-env.png)
 
 - **Step 1**: Install **NodeJs** in local host
     ```
