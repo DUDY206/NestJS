@@ -1,1 +1,5 @@
 nest g co: Create new controller and add to app.module (--no-spec options to not create file test spec)
+
+nest g s --no-spec: Create a new service
+
+nest g mo --name-mode: Create a new module
