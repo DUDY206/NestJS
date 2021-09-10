@@ -3,3 +3,14 @@ nest g co: Create new controller and add to app.module (--no-spec options to not
 nest g s --no-spec: Create a new service
 
 nest g mo --name-mode: Create a new module
+
+nest g class "directory class": Create new class file
+
+#############################################
+NodeJs package manager
+
+// Install needed dependencies
+npm i class-validator class-transformer 
+
+// Install @nestjs/mapped-types 
+npm i @nestjs/mapped-types
