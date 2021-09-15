@@ -5,10 +5,10 @@ import { CoffeesController } from './coffees/coffees.controller';
 import { CoffeesService } from './coffees/coffees.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'mysql', // type of our database
       host: 'mysql', // database host
@@ -18,7 +18,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'nestjs', // name of our database,
       autoLoadEntities: true, // models will be loaded automatically 
       synchronize: true, // your
-    })
+    }),
+    CoffeesModule,
+    UsersModule
   ],
   controllers: [AppController, ],
   providers: [AppService],
