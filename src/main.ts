@@ -13,6 +13,10 @@ async function bootstrap() {
 
     //transform request object to DTO object
     transform: true,
+
+    transformOptions:{
+      enableImplicitConversion: true,
+    }
   }));
   await app.listen(3000);
 }
