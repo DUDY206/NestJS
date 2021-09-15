@@ -1,6 +1,6 @@
 import { IsEmail } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Comment } from "src/comments/entities/comment.entity";
 @Entity()
 export class User {
 
@@ -18,4 +18,7 @@ export class User {
     @Column()
     @IsEmail()
     email: string;
+
+    @OneToMany(() => Comment, comment => comment.user)
+    comments: Comment[];
 }
