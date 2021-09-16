@@ -7,6 +7,7 @@ import { CoffeesModule } from './coffees/coffees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { CommentsModule } from './comments/comments.module';
+import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { CommentsModule } from './comments/comments.module';
     }),
     CoffeesModule,
     UsersModule,
-    CommentsModule
+    CommentsModule,
+    CoffeeRatingModule
   ],
   controllers: [AppController, ],
   providers: [AppService],
