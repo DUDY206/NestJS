@@ -12,7 +12,6 @@ export class UsersService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) { 
-    console.log(this.userRepository);
   }
 
   async create(createUserDto: CreateUserDto) {
