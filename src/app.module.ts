@@ -18,7 +18,7 @@ import { CommentsModule } from './comments/comments.module';
       password: 'abcdef123', // user password
       database: 'nestjs', // name of our database,
       autoLoadEntities: true, // models will be loaded automatically 
-      synchronize: true, // your
+      // synchronize: true, // your
     }),
     CoffeesModule,
     UsersModule,

@@ -6,6 +6,18 @@ nest g mo --name-mode: Create a new module
 
 nest g class "directory class": Create new class file
 
+//create new file migrations
+npx typeorm migration:create -n CoffeeRefactor
+
+//run migrations
+npx typeorm migration:run
+
+//rollback migration
+npx typeorm migration:revert
+
+//sync change database to migration
+//note have to turn off sync in app module
+npx typeorm migration:generate -n SchemaSync 
 #############################################
 NodeJs package manager
 
