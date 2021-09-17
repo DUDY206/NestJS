@@ -7,7 +7,8 @@ import { CoffeeRatingService } from './coffee-rating.service';
   imports: [
     DatabaseModule.register([{
       type:'mysql',
-      host:'localhost',
+      host:'mysql',
+      username:'root',
       password:'abcdef123',
       port:3306,
     }]),

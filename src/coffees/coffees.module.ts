@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Scope } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
 import { Connection } from 'typeorm';
@@ -23,6 +23,7 @@ import { Flavor } from './entities/flavor.entity';
                 console.log('[!] Async Factory');
                 return coffeeBrands;
             },
+            scope: Scope.TRANSIENT,
             inject: [Connection] 
         }
     ],
