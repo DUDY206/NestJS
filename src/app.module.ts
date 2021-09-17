@@ -9,16 +9,18 @@ import { UsersModule } from './users/users.module';
 import { CommentsModule } from './comments/comments.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql', // type of our database
-      host: 'mysql', // database host
-      port: 3306, // database host
-      username: 'dudy206', // username
-      password: 'abcdef123', // user password
-      database: 'nestjs', // name of our database,
+      host: process.env.DATABASE_HOST, // database host
+      port: +process.env.DATABASE_PORT, // database host
+      username: process.env.DATABASE_USER, // username
+      password: process.env.DATABASE_PASSWORD, // user password
+      database: process.env.DATABASE_NAME, // name of our database,
       autoLoadEntities: true, // models will be loaded automatically 
       synchronize: true, // your
     }),

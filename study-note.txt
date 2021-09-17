@@ -30,6 +30,8 @@ npm i @nestjs/mapped-types
 // Install neccessary TypeORM dependencies
 npm install @nestjs/typeorm typeorm pg
 
+//Install package config
+npm i @nestjs/config -s
 ############# OTHER PACKAGES ################################
 npm i bcrypt
 npm i -D @types/bcrypt
