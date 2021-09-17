@@ -32,6 +32,11 @@ npm install @nestjs/typeorm typeorm pg
 
 //Install package config
 npm i @nestjs/config -s
+
+// Install neccessary dependencies
+$ npm install @hapi/joi
+$ npm install --save-dev @types/hapi__joi
+
 ############# OTHER PACKAGES ################################
 npm i bcrypt
 npm i -D @types/bcrypt
