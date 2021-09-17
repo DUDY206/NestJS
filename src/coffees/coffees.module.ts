@@ -7,6 +7,10 @@ import { CoffeesService } from './coffees.service';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 
+class ConfigServices{}
+class DevelopmentConfigService {}
+class ProductConfigService {}
+
 @Module({
     imports:[
         TypeOrmModule.forFeature([Coffee, Flavor, Event])
@@ -14,6 +18,10 @@ import { Flavor } from './entities/flavor.entity';
     controllers: [CoffeesController],
     providers: [
         CoffeesService,
+        {
+            provide: ConfigServices,
+            useClass: process.env.NODE_ENV === 'development' ? DevelopmentConfigService : ProductConfigService,
+        },
         {
             provide: COFFEE_BRANDS,
             useValue: ['247', 'Wake up']
