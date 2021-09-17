@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
+import { Connection } from 'typeorm';
 import { COFFEE_BRANDS } from './coffees.constants';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
@@ -16,7 +17,13 @@ import { Flavor } from './entities/flavor.entity';
         CoffeesService,
         {
             provide: COFFEE_BRANDS,
-            useValue: ['247', 'Wake up']
+            useFactory: async (connection: Connection) : Promise<string[]> =>{
+                //const coffeeBrands = await connection.query("SELECT * FROM ...")
+                const coffeeBrands = await Promise.resolve(['247', 'Wake up']);
+                console.log('[!] Async Factory');
+                return coffeeBrands;
+            },
+            inject: [Connection] 
         }
     ],
     exports: [CoffeesService],
