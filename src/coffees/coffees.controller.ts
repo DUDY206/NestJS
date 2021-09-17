@@ -13,7 +13,7 @@ export class CoffeesController {
         private readonly coffeesService: CoffeesService,
         @Inject(REQUEST) private readonly request: Request
     ){
-        console.log('CofeesController created');
+        // console.log('CofeesController created');
     }
     // @Get('flavors') => backend.test.com/coffees/flavors
 
