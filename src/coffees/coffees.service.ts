@@ -10,7 +10,7 @@ import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 
 @Injectable(
-    // { scope: Scope.TRANSIENT}
+    { scope: Scope.REQUEST}
 )
 export class CoffeesService {
     

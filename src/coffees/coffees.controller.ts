@@ -1,4 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, Patch, Post, Query, Res } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import { Request } from 'express';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -8,8 +10,11 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 export class CoffeesController {
     constructor(
         //private ---> shorthand create a property
-        private readonly coffeesService: CoffeesService
-    ){}
+        private readonly coffeesService: CoffeesService,
+        @Inject(REQUEST) private readonly request: Request
+    ){
+        console.log('CofeesController created');
+    }
     // @Get('flavors') => backend.test.com/coffees/flavors
 
     @Get()
