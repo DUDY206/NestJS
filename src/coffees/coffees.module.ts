@@ -1,4 +1,5 @@
 import { Module, Scope } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
 import { Connection } from 'typeorm';
@@ -10,7 +11,8 @@ import { Flavor } from './entities/flavor.entity';
 
 @Module({
     imports:[
-        TypeOrmModule.forFeature([Coffee, Flavor, Event])
+        TypeOrmModule.forFeature([Coffee, Flavor, Event]),
+        ConfigModule,
     ],
     controllers: [CoffeesController],
     providers: [

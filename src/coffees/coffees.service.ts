@@ -1,4 +1,5 @@
 import { BadRequestException, HttpException, HttpStatus, Inject, Injectable, NotFoundException, Scope } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { Event } from 'src/events/entities/event.entity';
@@ -21,8 +22,11 @@ export class CoffeesService {
         private readonly flavorRepository : Repository<Flavor>,
         private readonly connection: Connection,
         @Inject(COFFEE_BRANDS) coffeeBrands: string[],
+        private readonly configService: ConfigService,
     ){
-        console.log('CoffeeService instantiated')        
+        // console.log('CoffeeService instantiated')        
+        const databaseHost = this.configService.get<string>('DATABASE_HOST');
+        console.log(databaseHost);
     }
 
     async findAll(pagniationQuery : PaginationQueryDto){
