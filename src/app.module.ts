@@ -10,6 +10,7 @@ import { CommentsModule } from './comments/comments.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import { CommonModule } from './common/common.module';
 import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
 @Module({
@@ -38,7 +39,8 @@ import appConfig from './config/app.config';
     UsersModule,
     CommentsModule,
     CoffeeRatingModule,
-    DatabaseModule
+    DatabaseModule,
+    CommonModule
   ],
   controllers: [AppController, ],
   providers: [AppService],
