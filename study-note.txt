@@ -44,3 +44,5 @@ npm i -D @types/bcrypt
 
 ############ NOTES ##########################################
 filter use to handle exception in project - short understand is globalHandleException
+
+guard handle request like accept request with token 
