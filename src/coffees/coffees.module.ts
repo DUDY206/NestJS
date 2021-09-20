@@ -6,13 +6,14 @@ import { Connection } from 'typeorm';
 import { COFFEE_BRANDS } from './coffees.constants';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
+import coffeeConfig from './config/coffee.config';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 
 @Module({
     imports:[
         TypeOrmModule.forFeature([Coffee, Flavor, Event]),
-        ConfigModule,
+        ConfigModule.forFeature(coffeeConfig),
     ],
     controllers: [CoffeesController],
     providers: [
