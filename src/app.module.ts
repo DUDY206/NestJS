@@ -14,22 +14,25 @@ import * as Joi from '@hapi/joi';
 import appConfig from './config/app.config';
 @Module({
   imports: [
+    
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: 'mysql', // type of our database
+        host: process.env.DATABASE_HOST, // database host
+        port: +process.env.DATABASE_PORT, // database host
+        username: process.env.DATABASE_USER, // username
+        password: process.env.DATABASE_PASSWORD, // user password
+        database: process.env.DATABASE_NAME, // name of our database,
+        autoLoadEntities: true, // models will be loaded automatically 
+        synchronize: true, // your
+      })
+    }),
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(3306),
       }),
       load:[appConfig],
-    }),
-    TypeOrmModule.forRoot({
-      type: 'mysql', // type of our database
-      host: process.env.DATABASE_HOST, // database host
-      port: +process.env.DATABASE_PORT, // database host
-      username: process.env.DATABASE_USER, // username
-      password: process.env.DATABASE_PASSWORD, // user password
-      database: process.env.DATABASE_NAME, // name of our database,
-      autoLoadEntities: true, // models will be loaded automatically 
-      synchronize: true, // your
     }),
     CoffeesModule,
     UsersModule,
