@@ -22,7 +22,9 @@ async function bootstrap() {
     transformOptions:{
       enableImplicitConversion: true,
     }
-  }), new ParseIntPipe());
+  }), 
+    // new ParseIntPipe()
+  );
   app.useGlobalInterceptors(
     new WrapResponseInterceptor(),
     new TimeoutInterceptor(),

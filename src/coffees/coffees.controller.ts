@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, Patch, Post, Query, Res, SetMetadata } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
+import { Protocol } from 'src/common/decorators/protocol.decorators';
 import { Public } from 'src/common/decorators/public.decorators';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { resolve } from 'url';
@@ -22,8 +23,12 @@ export class CoffeesController {
     @Public()
     @Get()
     // findAll(@Res() res){
-    async findAll(@Query() pagniationQuery : PaginationQueryDto){
-        await new Promise(resolve => setTimeout(resolve, 5000));
+    async findAll(
+        @Protocol('https') protocol: string, 
+        @Query() pagniationQuery : PaginationQueryDto
+    ){
+        console.log(protocol);
+        // await new Promise(resolve => setTimeout(resolve, 5000));
         return this.coffeesService.findAll(pagniationQuery);
     }
 
