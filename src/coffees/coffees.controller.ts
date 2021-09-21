@@ -3,6 +3,7 @@ import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
 import { Public } from 'src/common/decorators/public.decorators';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
+import { resolve } from 'url';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -21,7 +22,8 @@ export class CoffeesController {
     @Public()
     @Get()
     // findAll(@Res() res){
-    findAll(@Query() pagniationQuery : PaginationQueryDto){
+    async findAll(@Query() pagniationQuery : PaginationQueryDto){
+        await new Promise(resolve => setTimeout(resolve, 5000));
         return this.coffeesService.findAll(pagniationQuery);
     }
 

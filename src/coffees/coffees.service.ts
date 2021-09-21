@@ -1,6 +1,7 @@
 import { BadRequestException, HttpException, HttpStatus, Inject, Injectable, NotFoundException, Scope } from '@nestjs/common';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Public } from 'src/common/decorators/public.decorators';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { Event } from 'src/events/entities/event.entity';
 import { Connection, Repository } from 'typeorm';
@@ -30,7 +31,7 @@ export class CoffeesService {
         // console.log('CoffeeService instantiated')        
         // const coffeeConfig = this.configService.get<string>('coffee.foo');
         // console.log(coffeeConfig);
-        console.log(coffeeConfiguration.foo);
+        // console.log(coffeeConfiguration.foo);
     }
 
     async findAll(pagniationQuery : PaginationQueryDto){

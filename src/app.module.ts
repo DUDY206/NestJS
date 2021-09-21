@@ -41,8 +41,8 @@ import appConfig from './config/app.config';
     CommentsModule,
     CoffeeRatingModule,
     DatabaseModule,
-    // CommonModule,
-    AuthModule
+    CommonModule,
+    // AuthModule
   ],
   controllers: [AppController, ],
   providers: [AppService],

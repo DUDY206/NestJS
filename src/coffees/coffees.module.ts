@@ -23,7 +23,7 @@ import { Flavor } from './entities/flavor.entity';
             useFactory: async (connection: Connection) : Promise<string[]> =>{
                 //const coffeeBrands = await connection.query("SELECT * FROM ...")
                 const coffeeBrands = await Promise.resolve(['247', 'Wake up']);
-                console.log('[!] Async Factory');
+                // console.log('[!] Async Factory');
                 return coffeeBrands;
             },
             scope: Scope.TRANSIENT,
